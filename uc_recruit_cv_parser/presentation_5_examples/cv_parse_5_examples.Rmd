@@ -1,0 +1,109 @@
+---
+title: "UC Recruit - CV Parser Examples"
+author: "Kevin DelRosso"
+date: "November 28, 2015"
+output: html_document
+latex_engine: xelatex
+---
+
+`r knitr::opts_chunk$set(cache=TRUE)`
+
+```{r set-options, echo=FALSE, cache=FALSE}
+options(width = 180)
+```
+
+**Setting up the workspace**
+
+```{r message=FALSE, echo=FALSE, cache=FALSE}
+rm(list = ls())
+setwd("~/Dropbox/GSR/parse_citations/R/")
+
+source("pdf_to_xml.R")
+source("parse_citations.R")
+source("extract_sections.R")
+source("extract_citations.R")
+
+display_examples =
+function( index )
+{
+    filenames = c( "~/Dropbox/GSR/CV_examples/CV_XML/cv_amir.xml",
+               "~/Dropbox/GSR/CV_examples/CV_XML/rubincv.xml",
+               "~/Dropbox/GSR/CV_examples/CV_XML/CV_-_Whooley_updated_2015_apps.xml",
+               "~/Dropbox/GSR/CV_examples/CV_XML/SHANASIEGELCVFall2015.xml",
+               "~/Dropbox/GSR/CV_examples/CV_XML/CV_Cohen___September_2015.xml" )
+
+    pub_filename = "~/Dropbox/GSR/parse_citations/text_files/publications.txt"
+    section_filename = "~/Dropbox/GSR/parse_citations/text_files/section_names.txt"
+    
+    cv_names = c( "aghakouchak", "rubin", "whooley", "siegel", "cohen" )
+
+    found_citations = mapply( function(file, cv_name) {
+        cat( "\n" )
+        print( cv_name )
+        cat( "\n" )
+        
+        results_df = try( main( file, cv_name, pub_filename, section_filename ), silent = TRUE )
+        
+        # if we get an error, print the file name and continue
+        if( class(results_df) == "try-error" ) {
+            print( paste( "Error with file:", file ) )
+            results_df = NULL
+        }
+        cat( "\n\n" )
+        results_df
+        }, filenames[[index]], cv_names[[index]], SIMPLIFY = FALSE)
+    
+    if( is.null( class(found_citations[[1]]) ) ) return( NULL )
+    if( class(found_citations[[1]]) != "data.frame" ) return( NULL )
+
+    
+    sapply( found_citations, class )
+    mask = which( sapply( found_citations, class ) == "data.frame" )
+    found_citations = do.call( rbind, found_citations[mask] )
+    
+    mask = found_citations$citation_rank == 1
+    
+    examples = found_citations[ mask, ]
+    
+    oiginal_citation = substring( examples$original_citation, 1, 60 )
+    df = data.frame( oiginal_citation, score = round( examples$score, 2) , 
+                     title_score = examples$title_score )
+    
+    invisible( sapply( split( df, examples$id ), function(x) {
+        cat( "\n" )
+        print( head(x, 15) ) 
+        cat( "\n" )
+        }) )
+}
+```
+
+##Amir AghaKouchak
+
+```{r}
+display_examples( 1 )
+```
+
+##Ashley T. Rubin
+
+```{r}
+display_examples( 2 )
+```
+
+##Owen Whooley
+
+```{r}
+display_examples( 3 )
+```
+
+##SHANA SIEGEL
+
+```{r}
+display_examples( 4 )
+```
+
+##Daniel Aldana Cohen
+
+```{r}
+display_examples( 5 )
+```
+

@@ -1,0 +1,294 @@
+---
+title: "Parse CV"
+author: "Kevin DelRosso"
+output: pdf_document
+---
+
+## High level overview
+
+**Setting up the workspace**
+
+```{r message=FALSE}
+rm(list = ls())
+setwd("~/Dropbox/GSR/parse_citations/R/")
+
+source("pdf_to_xml.R")
+source("parse_citations.R")
+source("extract_sections.R")
+source("extract_citations.R")
+```
+
+**Converting pdf to xml**  
+
+Using the function pdf_to_xml() in pdf_to_xml.R, we can converting all pdf files in the directory to xml.
+
+```{r massage=FALSE}
+dir = "~/Dropbox/GSR/CV_examples/SampleCVs"
+if( FALSE ) pdf_to_xml(dir)
+```
+
+**Exploring XML**  
+
+To get a feel for the data, lets look at some of the XML output from the first page of an example CV.
+
+```{r}
+# parse xml
+filename = "~/Dropbox/GSR/CV_examples/CV_XML/cv_amir.xml"
+doc = xmlParse(filename)
+
+# some xml output from page 1
+# note, the third entry contains unicode and causes an error with markdown
+# which is only reason it is omitted
+getNodeSet(doc, "//page[@id=1]//textbox")[c(1:2,4)]
+
+# getting all text locations, font, and size from page 1
+xpathSApply(doc, "//page[@id=1]//textbox/textline", xmlGetAttr, "bbox")[1:10]
+xpathSApply(doc, "//page[@id=1]//textbox/textline/text", xmlGetAttr, "font")[1:10]
+xpathSApply(doc, "//page[@id=1]//textbox/textline/text", xmlGetAttr, "size")[1:10]
+
+# counts for the whole document
+table(xpathSApply(doc, "//textbox/textline/text", xmlGetAttr, "font"))
+table(xpathSApply(doc, "//textbox/textline/text", xmlGetAttr, "size"))
+```
+
+**Extracting sections and citations**  
+
+Using the parsed XML file created above, we can create a data frame with features from the XML for each line of text. Using different combinations of features such as capitalization, text size, left indentation, font, bold / italic, and line spacing (currently not used as it's not effective) we can group all lines of text based on common features.  We can then identify one grouping as containing sections, or re-group using different features if no groups are found. Once groupings are made, the strings are compared with known section names.
+
+```{r}
+output = parse_cv( "~/Dropbox/GSR/CV_examples/CV_XML/cv_amir.xml", short_text = TRUE )
+df = output[[1]]
+df[c(1:2, 4:20), ]
+
+new_sections = output[[2]]
+new_sections
+```
+
+One strategy is to parse every CV in the database, to build a maximum sized list of sections names. We can then manually determine which sections correspond to education, publications, etc.
+
+We can then work on extracting citation information from each CV. We proceed down two paths, either we successfully grouped the CV and found section names or we didn't. For specific details on how the text grouping works, see the top section of extract_sections.R. In the first case, we'll locate the publication section and extract all text until the next section (which we know). In the other case, we'll walk through the CV looking for the publication section, and then extract all text until we find any previously identified section which isn't publication.
+
+Once we have the citation text, we have several possible methods for grouping the citation text together correctly: 
+
+* numbered list
+* author’s name
+* year ( used as a list )
+* textbox ( using the grouping returned from pdfminer, see note below )
+* left indentation
+* most common starting word
+
+Note: pdfminer at times will group text oddly. For example, if text is in a numbered list, sometimes all the text furthest left will be contained in one group, while all the indented text will be in another. It's also possible that just the numbers (1., 2., ...) will be on their own lines, even when they appear inline in the text. 
+
+## Example
+
+The following is an example which finds the sections and then extracts and parses each citation within the publication section.
+
+```{r}
+cv_name = "aghakouchak"
+cv_filename = "~/Dropbox/GSR/CV_examples/CV_XML/cv_amir.xml"
+pub_filename = "~/Dropbox/GSR/parse_citations/text_files/publications.txt"
+section_filename = "~/Dropbox/GSR/parse_citations/text_files/section_names.txt"
+
+output = parse_cv( cv_filename, short_text = FALSE )
+df = output[[1]]
+found_sections = output[[2]]
+
+# contains: "start_index", "start_section", "end_index", "end_section"
+name_index = get_section_locations( df$text, found_sections, pub_filename, section_filename )
+
+# print found sections using to extract citations
+print( t (as.data.frame(name_index) ) )
+cat( "\n" )
+
+# citation text
+df_text = df[ name_index$start_index : name_index$end_index, c("left_norm", "right_norm", "text")]
+df_text$text[1:10]
+
+# add auther's name and year
+df_text$name = get_name_lines( cv_name, df_text$text )
+df_text$year = get_year_lines( df_text$text )
+```
+
+```{r cache=TRUE}
+# group text into citations
+citations = get_citations( cv_filename, df_text, name_index )
+citations = trim( citations )
+
+# extract doi and year (if they appear in citation)
+doi = get_doi( citations )
+year = get_year( citations )
+
+# make citations begin with a letter (remove numbering)
+citations = str_extract( citations, "[[:alpha:]].*" )
+
+citation_id = gsub( ".*/(.*)\\.xml$", "\\1", cv_filename )
+
+n = 10
+found_citations = query_crossref( citations[1:n], doi[1:n], year[1:n], 
+                                  id = citation_id, cv_name = cv_name )
+
+# removing these columns for display only
+col_names = c("original_citation", "fullCitation", "authors", "title")
+found_citations = found_citations[ found_citations$citation_rank == 1, 
+                                   !names(found_citations) %in% col_names]
+found_citations
+```
+
+CrossRef returns the title, full citation (in a consistent format), and a score for the match. We then create a fuzzy match between the title CrossRef returns and the original citation. This gives us a pseudo percentage for the title match. We can then multiply the returned score by the title score to give use a better sense of which citation is correct. This isn't need when the citation is obvious, but many times none of the returned results seem likely based solely on the score. If we get a good title match, however, we can be more confident we've found the citation.
+
+Interestingly, the first citation we had found the doi, which gave us a very high score (~18) returned from CrossRef, however the title_score was only 0.7. Further investigation found that the actual title is 
+
+"Water and climate: Recognize anthropogenic drought"
+
+which is different from the citation on the CV:
+
+"AghaKouchak A., Feldman D., Hoerling M., Huxman T., Lund J., 2015, Recognize Anthropogenic Drought, Nature, 524 (7566), 409-4011, doi:10.1038/524409a."
+
+Also notice that there is a typo in the page numbers in the citation (4011 should be 411). All this to be aware of what can go wrong when trying to match, even when we have the doi.
+
+\newpage  
+
+## Using with UC Recruit
+
+The main files are:
+
+* pdf_to_xml.R
+* parse_citations.R
+* extract_sections.R
+* extract_citations.R
+* parse_ucrecruit.R
+
+We also use the files:
+
+* procMiner.R - called via pdf_to_xml.R
+* pdf_to_xml_wrapper.R - called via pdf_to_xml.R
+* libraries.R - called by all files
+
+see each file for a full description and the important functions. The most important functions overall are:
+
+* pdf_to_xml()
+* parse_cv()
+* get_section_locations()
+* get_citations()
+* query_crossref()
+
+**Process all PDFs to XML**  
+
+In order to process all the PDF CVs to XML, use the function call_pdf_to_xml() in parse_ucrecruit.R. This will run though each folder and convert all the PDFs to XML. If the original folder name is ucrecruit_university, the XMLs will be in the folder ucrecruit_university_xml. Inside this new folder will also be a _error_log.txt file which records all the PDFs which had an error during the conversion process and were not converted successfully. It takes approximately 1 hour to process 1,000 PDFs.
+
+Note. We ran into an issue with R running out of memory and crashing while processing the thousands of UC Recruit PDFs. A solution that looks promising uses the file pdf_to_xml_wrapper.R. The idea is the function pdf_to_xml() makes a system call to create a new R session. We can then loop over all the files and periodically launch new R sessions, re-allocating memory once an old session closes and a new one begins. We needed to update one function in Duncan's procMiner.R, and updated version is shown below:
+
+```{r}
+convertPDF =
+    #
+    # If given a pdf, call pdfminer's pdf2txt to create the XML file.
+    #
+    #XXX Need to locate the pdfminer/tools/pdf2txt.py script
+    #
+function(filename, pdfminer = getOption("PDF2TXT", "pdf2txt.py"))
+{
+    # update path to pdf2txt.py if not option given above
+    if( pdfminer == "pdf2txt.py" ) {
+        pdfminer = "~/anaconda/bin/pdf2txt.py"
+    }
+    
+    cmd = sprintf("%s -t xml -F 1.0 %s", pdfminer, filename)
+    system(cmd, intern = TRUE)
+}
+```
+
+Typically we'll just use the line
+
+```{r eval=FALSE}
+options(PDF2TXT = "~/anaconda/bin/pdf2txt.py")
+```
+
+to add the full path to the file pdf2txt.py. However, this method caused the shell terminal to complain about not finding that file, so we've hard coded the path "~/anaconda/bin/pdf2txt.py". This may need to be updated if working on a different system which doesn't use anaconda.
+
+**Process all sections from XML**  
+
+Using the function call_parse_cv() in parse_ucrecruit.R, we can run through all the parsed XML files from above and extract all the sections. Sometimes we'll get errors in the process, notably an error with the XML not being recongized as XML and getting an error with xmlParse(). The files with errors are saved in a log file "~/Dropbox/GSR/parse_citations/text_files/section_errors.txt" and can be further explored to improve the results using explore_section_errors().
+
+As a test, we extracted sections from UCB, 45,606 PDF files from "~/Documents/cv/ucrecruit_ucb_xml/". The results are:
+
+* total files: 45606
+* found section count: 38880 ( 85.3\% )
+* error count: 1173 ( 2.6\% )
+* time: ~2.7 hours
+
+and a rough histogram of the number of sections extracted from each CV.
+
+```{r}
+image = "~/Dropbox/GSR/parse_citations/images/number_of_sections.png"
+grid.raster( readPNG(image) )
+```
+
+**Process all citations** 
+
+The following example is a small version of what the final UC Recruit parsing process will look like. We'll run a loop (mapply) using the XML files and CV author's names. With each pair we'll call main() which runs the whole process from start to finish. If we get an error we'll write that file to an error log, otherwise we'll save the results to a data frame (as a .RData).
+
+```{r eval=FALSE}
+# load in the XML
+xml_files = list.files("~/Dropbox/GSR/CV_examples/CV_XML", full.names = TRUE)
+cv_names = tolower( readLines( "~/Dropbox/GSR/parse_citations/text_files/cv_names.txt" ) )
+
+# took ~36 minutes for 65
+start = proc.time()
+
+# use sink to capture output rather than printing to the console
+sink( file("~/Dropbox/GSR/parse_citations/text_files/citation_output.txt", open = "wt") )
+
+found_citations = mapply( function(file, cv_name) {
+    results_df = try( main( file, cv_name, pub_filename, section_filename ), silent = TRUE )
+    
+    # if we get an error, print the file name and continue
+    if( class(results_df) == "try-error" ) {
+        print( paste( "Error with file:", file ) )
+        results_df = NULL
+    }
+    cat( "\n\n" )
+    results_df
+    }, xml_files, cv_names)
+
+sink()
+proc.time() - start
+
+# save the results with today's date, this is the final output
+save_filename = sprintf( "~/Dropbox/GSR/parse_citations/saved_results/found_citations_%s.RData", 
+                         Sys.Date() )
+save( found_citations, file = save_filename )
+```
+
+This example ran through 65 CVs in ~36 minutes. It returned 1,402 total results and 514 unique citations. The mean and median for title_score and score are shown below. Note, a score above 1 appears to be good (though this value is returned from crossref so it's unknown exactly how it's computed).
+
+```{r}
+# loads found_citations object into workspace
+load( "~/Dropbox/GSR/parse_citations/saved_results/found_citations_2015-11-28.RData" )
+
+# we don't get back results from every CV
+table( sapply( found_citations, class ) )
+
+# combine all the data.frames
+mask = which( sapply( found_citations, class ) == "data.frame" )
+found_citations = do.call( rbind, found_citations[mask] )
+
+# all citations
+dim( found_citations )
+
+# keeping only those with rank = 1
+mask = found_citations$citation_rank == 1
+found_citations = found_citations[ mask, ]
+
+dim( found_citations )
+head( table( found_citations$id ) )
+
+# some statistics
+title_median = median( found_citations$title_score )
+title_mean = mean( found_citations$title_score )
+
+score_median = median( found_citations$score )
+score_mean = mean( found_citations$score )
+
+data.frame( title_score = c(title_median, title_mean), 
+            score = c(score_median, score_mean), row.names = c("median", "mean") )
+```

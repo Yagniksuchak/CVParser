@@ -1,0 +1,20 @@
+Preliminary assumptions for detecting section titles in CVs:
+
+-margins and indentation will remain the same for each CV (i.e. won't change between pages)
+-section titles won't span multiple lines (unless column format)
+
+for title detection, we'll use a combination of the follow:
+
+-detect indentation
+-item followed by a numbered or bulleted list
+-UPPERCASE
+-font, bold, etc.
+-text size
+-spacing around the word
+-line length
+
+
+Notes:
+-section title with bullet (how is bullet passed to XML, what is the character size, etc.)
+-how to detect underline, horizontal rule, etc.
+-title could be centered (at least for resumes, possibly less likely for CV)

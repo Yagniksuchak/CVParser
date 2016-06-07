@@ -1,0 +1,159 @@
+---
+title: "Parse CV"
+author: "Kevin DelRosso"
+output: pdf_document
+---
+
+**Setting up the workspace**
+
+```{r message=FALSE}
+# R files from Duncan
+source("~/Dropbox/GSR/CVRead/R/freecite.R")
+source("~/Dropbox/GSR/CVRead/R/procMiner.R")
+source("~/Dropbox/GSR/CVRead/R/crossref.R")
+source("~/Dropbox/GSR/CVRead/R/text.R")
+source("~/Dropbox/GSR/CVRead/R/utils.R")
+
+# for querying citations
+source("parse_citations.R")
+
+# parsing CVs to extract sections and citations as text
+source("cv_parse_v2.R")
+```
+
+**Converting pdf to xml**  
+
+Using the function pdf_to_xml() in cv_parse_v2.R, we can perform a preliminary CV parse, converting all pdf files in the directory to xml.
+
+```{r massage=FALSE}
+dir = "~/Dropbox/GSR/CV_examples/SampleCVs"
+if( FALSE ) pdf_to_xml(dir)
+# got error with "../../CV_examples/SampleCVs/../CV_XML/colom_CV.xml"
+```
+
+**Exploring XML**  
+
+To get a feel for the data, lets look at some of the xml output from the first page of an example CV.
+
+```{r}
+# parse xml
+filename = "~/Dropbox/GSR/CV_examples/CV_XML/cv_amir.xml"
+doc = xmlParse(filename)
+
+# some xml output from page 1
+# note, the third entry contains unicode and causes an error with markdown
+# which is only reason it is omitted
+getNodeSet(doc, "//page[@id=1]//textbox")[c(1:2,4)]
+
+# getting all text locations, font, and size from page 1
+xpathSApply(doc, "//page[@id=1]//textbox/textline", xmlGetAttr, "bbox")[1:10]
+xpathSApply(doc, "//page[@id=1]//textbox/textline/text", xmlGetAttr, "font")[1:10]
+xpathSApply(doc, "//page[@id=1]//textbox/textline/text", xmlGetAttr, "size")[1:10]
+
+# counts for the whole document
+table(xpathSApply(doc, "//textbox/textline/text", xmlGetAttr, "font"))
+table(xpathSApply(doc, "//textbox/textline/text", xmlGetAttr, "size"))
+```
+
+**Extracting sections and citations**  
+
+Using the parsed xml file created above, we can then create a data frame with features from the xml for each line of text. Using different combinations of features such as capitalization, text size, left indentation, font, bold / italic, and line space (currently not used as it's not effective) we can group all lines of text based on common features. Speficially, we currently group using the rounded left indentation for all passes, and the original text size. We should consider using the rounded text size and compare our results.  We can then identify one grouping as containing sections, or re-group using different features if no groups found. Once groupings are made, the strings are compared with known section names. Still to do is using underline, horizontal rules, and improving parsing for column style CVs.
+
+```{r}
+output = parse_cv( "~/Dropbox/GSR/CV_examples/CV_XML/cv_amir.xml", short_text = TRUE )
+df = output[[1]]
+df[c(1:2, 4:20), ]
+
+new_sections = output[[2]]
+new_sections
+```
+
+One strategy is to parse every CV in the database, to build a maximum sized list of sections names. We can then manually determine which sections correspond to education, publications, etc.
+
+We can then work on extracting citation information from each CV. We proceed down two paths, either we successfully grouped the CV and found section names or we didn't. In the first case, we'll locate the publication section and extract all text until the next section (which we know). In the other case, we'll walk through the CV looking the publication section, and then extract all text until we find any previously identified section which isn't publication.
+
+Once we have the citation text, we have several possible methods for grouping the citation text together correctly: 
+    - by a numbered / bulleted list  
+    - by left / right indentation  
+    - using the textbox information from the xml (we can have issues with text incorrectly grouped sometimes due to page transitions). We can look at line lengths and page transition information to try and correct this.  
+
+Note: pdfminer at times will group text oddly. For example, if text is in a numbered list, sometimes all the text furthest left will be contained in one group, while all the indented text will be in another. It's also possible that just the numbers (1., 2., ...) will be on their own lines, even when they appear inline in the text. 
+
+**Example**  
+
+Example which finds the sections, then extracts and parses the citations.
+
+```{r}
+output = parse_cv( "~/Dropbox/GSR/CV_examples/CV_XML/cv_amir.xml", short_text = FALSE )
+# output = parse_cv( "~/Dropbox/GSR/CV_examples/CV_XML/JBLucks_CV_Cornell_2015_Web1.xml", short_text = FALSE )
+# output = parse_cv( "~/Dropbox/GSR/CV_examples/CV_XML/Mulhearn_CV.xml", short_text = FALSE )
+
+df = output[[1]]
+new_sections = output[[2]]
+
+# sections found for publication section
+pub_sections = readLines( "~/Dropbox/GSR/parse_citations/text_files/publications.txt" )
+reg = paste( pub_sections, collapse = "|")
+
+# index location of the publication section
+index = grep( reg, new_sections )
+
+text = fix_group_text( tolower(df$text) )
+start_index = which( text == new_sections[index] ) + 1
+
+# either we take the next section, or publications is the last section
+# and we extract all text until the end of document
+end_index = 
+if( index == length(new_sections) ) {
+    length(text)
+} else {
+    which( text == new_sections[index + 1] ) - 1
+}
+
+# all citation text
+text = df[start_index:end_index, ]$text
+text[1:10]
+```
+
+```{r cache=TRUE}
+# group citations, currently by numbered list
+df_text = df[start_index:end_index, c("left_norm", "right_norm", "text")]
+citations = get_citations(df_text)
+citations = trim( citations )
+
+# extract doi and year (if they appear in citation)
+doi = get_doi( citations )
+year = get_year( citations )
+
+# make citations begin with a letter (remove numbering)
+citations = str_extract( citations, "[[:alpha:]].*" )
+
+n = 10
+found_citations = query_crossref( citations[1:n], doi[1:n], year[1:n] )
+
+# removing these columns for display only
+col_names = c("original_citation", "fullCitation", "authors", "title")
+found_citations = found_citations[, !names(found_citations) %in% col_names]
+found_citations
+```
+
+CrossRef returns the title, full citation (in a consistent format), and a score for the match. We then create a fuzzy match between the title CrossRef returns and the original citation. This gives us a pseudo percentage for the title match (still working on this part to make sure it's right). We can then multiply the returned score by the title score to give use a better sense of which citation is correct. This isn't need when the citation is obvious, but many times none of the returned results seem likely based solely on the score. If we get a good title match, however, we can be more confident we've found the citation.
+
+Interestingly, the first citation we had found the doi, which gave us a very high score (~18) returned from CrossRef, however the title_score was only 0.7. Further investigation found that the actual title is 
+
+"Water and climate: Recognize anthropogenic drought"
+
+which is different from the citation on the CV:
+
+"AghaKouchak A., Feldman D., Hoerling M., Huxman T., Lund J., 2015, Recognize Anthropogenic Drought, Nature, 524 (7566), 409-4011, doi:10.1038/524409a."
+
+Also notice that there is a typo in the page numbers in the citation (4011 should be 411). All this to be aware of what can go wrong when trying to match, even when we have the doi.
+
+Using the returned full citation we can also extract authors, journal, and any other citation info we'd like easily. We can also pass the returned doi to another CrossRef API to get citation counts.
+
+**Validation**  
+
+These scores lead to a natural method of validation. We can look at the all the scores and get a feel for how well or poor the citation parsing went. We can then parse again using a different method if the scores are too low. Currently we only keep one result per citation (the one with the highest merge_score). This is out of convenience since the data can be shown in a data.frame, but we could save as many results as would be useful, either in xml or json format most likely.
+
+
+

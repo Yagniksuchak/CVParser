@@ -1,0 +1,737 @@
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/Abrutyn_CV.xml"
+[1] "Pass: 1"
+                 start_index                start_section 
+                        "52" "peer reviewed publications" 
+                   end_index                  end_section 
+                       "128"         "other publications" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/Allyson_Stokes_CV.xml"
+[1] "Pass: 1"
+         start_index        start_section 
+                "17"       "publications" 
+           end_index          end_section 
+                "47" "honours and awards" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/almquist-cv.xml"
+[1] "Pass: 1"
+            start_index           start_section 
+                   "64" "peerreviewed articles" 
+              end_index             end_section 
+                   "82"         "book chapters" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/Anderson__KF_-_CV.xml"
+[1] "Pass: 1"
+                start_index               start_section 
+                       "31" "peerreviewed publications" 
+                  end_index                 end_section 
+                       "51"             "book chapters" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/AnderssonCV-Septb2015.xml"
+[1] "Pass: 1"
+                    start_index 
+                           "39" 
+                  start_section 
+"peerreviewed journal articles" 
+                      end_index 
+                           "71" 
+                    end_section 
+   "peerreviewed book chapters" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/Apesoa-Varano_CV_AUGUST_2015_082815.xml"
+[1] "Pass: 1"
+               start_index              start_section 
+                      "75"             "publications" 
+                 end_index                end_section 
+                     "212" "conference presentations" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/Aviles_CV_2015.xml"
+[1] "Pass: 1"
+                start_index               start_section 
+                       "30" "peerreviewed publications" 
+                  end_index                 end_section 
+                       "36"       "writing in progress" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/Barron_CV.xml"
+[1] "Pass: 1"
+        start_index       start_section           end_index 
+               "52"      "publications"                "66" 
+        end_section 
+"grants and awards" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/Berkowsky_CV_-_August_2015 (1).xml"
+[1] "Pass: 1"
+                     start_index 
+                           "110" 
+                   start_section 
+"publications  journal articles" 
+                       end_index 
+                           "128" 
+                     end_section 
+   "publications  book chapters" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/Berkowsky_CV_-_August_2015.xml"
+[1] "Pass: 1"
+                     start_index 
+                           "110" 
+                   start_section 
+"publications  journal articles" 
+                       end_index 
+                           "128" 
+                     end_section 
+   "publications  book chapters" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/Bloom_--_C.V.xml"
+[1] "Pass: 1"
+                                       start_index 
+                                              "30" 
+                                     start_section 
+"peer reviewed journal articles and book chapters" 
+                                         end_index 
+                                              "48" 
+                                       end_section 
+                    "other scholarly publications" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/Borchert_CV_Fall_2015.xml"
+[1] "Pass: 1"
+                    start_index 
+                           "34" 
+                  start_section 
+  "publications  peer reviewed" 
+                      end_index 
+                           "63" 
+                    end_section 
+"fellowships awards and grants" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/BraniganCV_Sept2015.xml"
+[1] "Pass: 1"
+         start_index        start_section 
+                "37"       "publications" 
+           end_index          end_section 
+                "43" "papers in progress" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/Caitlyn_Collins_CV_3_UCDavis.xml"
+[1] "Pass: 1"
+                               start_index 
+                                      "20" 
+                             start_section 
+"publi cat ions   p e e r r e v i e w e d" 
+                                 end_index 
+                                      "35" 
+                               end_section 
+              "manus cri pts in pro gress" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/Caputo_CV_September_11.xml"
+[1] "Pass: 1"
+            start_index           start_section 
+                   "38" "refereed publications" 
+              end_index             end_section 
+                   "41"    "other publications" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/Chuang_CV.xml"
+[1] "Pass: 1"
+             start_index            start_section 
+                    "18"           "publications" 
+               end_index              end_section 
+                    "51" "fellowships and grants" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+[1] "Citation Pass: 3"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/Coutinho-Sledge.CV_June_2015.xml"
+[1] "Pass: 1"
+                 start_index                start_section 
+                        "59" "peer reviewed publications" 
+                   end_index                  end_section 
+                        "64"    "scholarly presentations" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/CRACIUN_CV_September_2015.xml"
+[1] "Pass: 1"
+          start_index         start_section 
+                 "38"        "publications" 
+            end_index           end_section 
+                 "44" "writing in progress" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/Curriculum_Vitae__Sociology.xml"
+[1] "Pass: 1"
+            start_index           start_section 
+                  "165" "selected publications" 
+              end_index             end_section 
+                  "238"     "awardsfellowships" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/Curriculum_Vitae_Ori_Swed.xml"
+[1] "Pass: 1"
+[1] "Pass: 2"
+                    start_index 
+                           "19" 
+                  start_section 
+                 "publications" 
+                      end_index 
+                           "34" 
+                    end_section 
+"awards fellowships and honors" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/cv (1).xml"
+[1] "Pass: 1"
+            start_index           start_section 
+                   "23"          "publications" 
+              end_index             end_section 
+                   "38" "articles under review" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/CV (2).xml"
+[1] "Pass: 1"
+[1] "Pass: 2"
+                                                              start_index 
+                                                                     "56" 
+                                                            start_section 
+                    "state the us and human rights paradigm publications" 
+                                                                end_index 
+                                                                     "63" 
+                                                              end_section 
+"investigacion y extensión para la conservación y desarrollo de recursos" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/CV copy.xml"
+[1] "Pass: 1"
+                            start_index 
+                                   "21" 
+                          start_section 
+                         "publications" 
+                              end_index 
+                                   "26" 
+                            end_section 
+"research under review and in progress" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+[1] "Citation Pass: 3"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/CV_-_Berry_2015.xml"
+[1] "Pass: 1"
+[1] "Pass: 2"
+          start_index         start_section 
+                 "19"        "publications" 
+            end_index           end_section 
+                 "30" "manuscripts in prep" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/CV_-_Elyas_Bakhtiari.xml"
+[1] "Pass: 1"
+             start_index            start_section 
+                    "27"           "publications" 
+               end_index              end_section 
+                    "67" "fellowships and honors" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/CV_-_Whooley_updated_2015_apps.xml"
+[1] "Pass: 1"
+[1] "Pass: 2"
+                                                    start_index 
+                                                           "27" 
+                                                  start_section 
+                                      "p u b l i c a t i o n s" 
+                                                      end_index 
+                                                          "102" 
+                                                    end_section 
+"r e s e a r c h   a n d   t e a c h i n g   i n t e r e s t s" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/cv_amir.xml"
+[1] "Pass: 1"
+                           start_index 
+                                 "129" 
+                         start_section 
+                        "publications" 
+                             end_index 
+                                 "410" 
+                           end_section 
+"service committee  panel assignments" 
+[1] "Citation Pass: 1"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/CV_Behler_2015_LaTex.xml"
+[1] "Pass: 1"
+               start_index              start_section 
+                      "40"             "publications" 
+                 end_index                end_section 
+                      "45" "manuscripts under review" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/CV_Cohen___September_2015.xml"
+[1] "Pass: 1"
+                    start_index 
+                           "27" 
+                  start_section 
+"peerreviewed journal articles" 
+                      end_index 
+                           "37" 
+                    end_section 
+    "books edited and chapters" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+[1] "Citation Pass: 3"
+[1] "Citation Pass: 4"
+[1] "Citation Pass: 5"
+[1] "Error with file: /Users/gsr/Dropbox/GSR/CV_examples/CV_XML/CV_Cohen___September_2015.xml"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/CV_RogersBrown_Aug_2015.docx.xml"
+[1] "Pass: 1"
+          start_index         start_section 
+                 "24"        "publications" 
+            end_index           end_section 
+                 "97" "fellowships  awards" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/CV_Shi.xml"
+[1] "Pass: 1"
+                 start_index                start_section 
+                        "46" "peer reviewed publications" 
+                   end_index                  end_section 
+                        "55"         "other publications" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/CV_XYYang.xml"
+[1] "Pass: 1"
+               start_index              start_section 
+                      "70"       "other publications" 
+                 end_index                end_section 
+                      "78" "manuscripts under review" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/CV.xml"
+[1] "Pass: 1"
+NULL
+[1] "Error with file: /Users/gsr/Dropbox/GSR/CV_examples/CV_XML/CV.xml"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/CVTsoukiasweb.xml"
+[1] "Pass: 1"
+   start_index  start_section      end_index    end_section 
+          "95" "publications"          "212"      "patents" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/DavisCV.xml"
+[1] "Pass: 1"
+                      start_index 
+                             "26" 
+                    start_section 
+"publications    book manuscript" 
+                        end_index 
+                             "43" 
+                      end_section 
+                "working  papers" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+[1] "Citation Pass: 3"
+[1] "Citation Pass: 4"
+[1] "Citation Pass: 5"
+[1] "Error with file: /Users/gsr/Dropbox/GSR/CV_examples/CV_XML/DavisCV.xml"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/GDouglas_CV-2015-Sept.xml"
+[1] "Pass: 1"
+                                   start_index 
+                                          "31" 
+                                 start_section 
+"peerreviewed journal articles  book chapters" 
+                                     end_index 
+                                          "57" 
+                                   end_section 
+                          "other publications" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/GinaSpitz_CV_Sep2015.xml"
+[1] "Pass: 1"
+                           start_index 
+                                  "24" 
+                         start_section 
+                        "publications" 
+                             end_index 
+                                  "39" 
+                           end_section 
+"honors awards fellowships and grants" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/Jacqueline_Torres_CV_NOREF.xml"
+[1] "Pass: 1"
+                      start_index 
+                             "32" 
+                    start_section 
+                   "publications" 
+                        end_index 
+                             "91" 
+                      end_section 
+"select conference presentations" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/Jason_Davis_September_2015_CV.xml"
+[1] "Pass: 1"
+   start_index  start_section      end_index    end_section 
+          "81" "publications"          "108"  "manuscripts" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/JBLucks_CV_Cornell_2015_Web1.xml"
+[1] "Pass: 1"
+          start_index         start_section 
+                 "48"        "publications" 
+            end_index           end_section 
+                "131" "patent applications" 
+[1] "Citation Pass: 1"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/JVH-CV-UCD_copy.xml"
+[1] "Pass: 1"
+                 start_index                start_section 
+                        "47" "peer reviewed publications" 
+                   end_index                  end_section 
+                        "52"         "papers in progress" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/KPB_CV.xml"
+[1] "Pass: 1"
+          start_index         start_section 
+                 "22"        "publications" 
+            end_index           end_section 
+                 "39" "teaching experience" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/MDondero_CV.xml"
+[1] "Pass: 1"
+                               start_index 
+                                      "26" 
+                             start_section 
+               "peerreviewed publications" 
+                                 end_index 
+                                      "33" 
+                               end_section 
+"manuscripts under review and in progress" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/Mulhearn_CV.xml"
+[1] "Pass: 1"
+            start_index           start_section 
+                   "32" "selected publications" 
+              end_index 
+                   "79" 
+[1] "Citation Pass: 1"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/Resume-8-2015.xml"
+[1] "Pass: 1"
+[1] "Pass: 2"
+      start_index     start_section         end_index 
+            "100"    "publications"             "197" 
+      end_section 
+"review services" 
+[1] "Citation Pass: 1"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/Rosen_CV.xml"
+[1] "Pass: 1"
+           start_index          start_section 
+                  "32"         "publications" 
+             end_index            end_section 
+                  "68" "awards  distinctions" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/Roussell.CV.xml"
+[1] "Pass: 1"
+   start_index  start_section      end_index    end_section 
+          "24" "publications"          "100"       "awards" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/rubincv.xml"
+[1] "Pass: 1"
+                start_index               start_section 
+                       "29" "peerreviewed publications" 
+                  end_index                 end_section 
+                       "53"        "other publications" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/SapinskiJP_CV_2015-09-15.xml"
+[1] "Pass: 1"
+          start_index         start_section 
+                 "65"        "publications" 
+            end_index           end_section 
+                "259" "teaching experience" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/Sarabia_CV_UCDavis.xml"
+[1] "Pass: 1"
+                         start_index 
+                                "40" 
+                       start_section 
+        "peer reviewed publications" 
+                           end_index 
+                                "48" 
+                         end_section 
+"works under review and in progress" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/SCHELLY_CV_082515.xml"
+[1] "Pass: 1"
+               start_index              start_section 
+                      "20"             "publications" 
+                 end_index                end_section 
+                      "27" "manuscripts under review" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/Schimmele_CV.xml"
+[1] "Pass: 1"
+   start_index  start_section      end_index    end_section 
+          "25" "publications"          "149"       "awards" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/SHANASIEGELCVFall2015.xml"
+[1] "Pass: 1"
+          start_index         start_section 
+                 "48"        "publications" 
+            end_index           end_section 
+                 "65" "paper presentations" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+[1] "Citation Pass: 3"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/SHIN_CV_2015.xml"
+[1] "Pass: 1"
+                start_index               start_section 
+                       "24" "publications under review" 
+                  end_index                 end_section 
+                       "26"            "working papers" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+[1] "Citation Pass: 3"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/Sosnaud_CV_.xml"
+[1] "Pass: 1"
+        start_index       start_section           end_index 
+               "33"      "publications"                "46" 
+        end_section 
+"works in progress" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/Tabler_CV_9_2_2015.xml"
+[1] "Pass: 1"
+              start_index             start_section 
+                     "29"   "research publications" 
+                end_index               end_section 
+                    "113" "grants and scholarships" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/TurowetzCV_UCD.xml"
+[1] "Pass: 1"
+          start_index         start_section 
+                 "18"        "publications" 
+            end_index           end_section 
+                 "67" "fellowships  awards" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/Van_Alstyne_CV.xml"
+[1] "Pass: 1"
+   start_index  start_section      end_index    end_section 
+          "37" "publications"           "42" "book reviews" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+[1] "Citation Pass: 3"
+[1] "Citation Pass: 4"
+[1] "Citation Pass: 5"
+[1] "Error with file: /Users/gsr/Dropbox/GSR/CV_examples/CV_XML/Van_Alstyne_CV.xml"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/VanHeuvelen-CV-2015-06-17.xml"
+[1] "Pass: 1"
+         start_index        start_section 
+                "44"       "publications" 
+           end_index          end_section 
+                "63" "other publications" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/Vega_CV.xml"
+[1] "Pass: 1"
+    start_index   start_section       end_index 
+          "119"  "publications"           "146" 
+    end_section 
+"presentations" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/Wagner_CV.xml"
+[1] "Pass: 1"
+            start_index           start_section 
+                   "37"          "publications" 
+              end_index             end_section 
+                   "52" "manuscripts in review" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/Weitzman_CV_August_2015.xml"
+[1] "Pass: 1"
+                           start_index 
+                                  "27" 
+                         start_section 
+          "peer reviewed publications" 
+                             end_index 
+                                  "34" 
+                           end_section 
+"book chapters and other publications" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/Yavorsky_CV__2015.xml"
+[1] "Pass: 1"
+               start_index              start_section 
+                      "31"             "publications" 
+                 end_index                end_section 
+                      "44" "manuscripts under review" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/Zarrugh_Curriculum_Vitae_2015_UC-Davis.xml"
+[1] "Pass: 1"
+                               start_index 
+                                      "19" 
+                             start_section 
+                 "peerreview publications" 
+                                 end_index 
+                                      "25" 
+                               end_section 
+"manuscripts under review  in preparation" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+
+[1] "/Users/gsr/Dropbox/GSR/CV_examples/CV_XML/Zinobia_Bennefield_Curriculum_Vitae.xml"
+[1] "Pass: 1"
+                           start_index 
+                                  "25" 
+                         start_section 
+                        "publications" 
+                             end_index 
+                                  "47" 
+                           end_section 
+"honors awards grants and fellowships" 
+[1] "Citation Pass: 1"
+[1] "Citation Pass: 2"
+
+

@@ -1,0 +1,29 @@
+http://subjectguides.library.american.edu/c.php?g=175008&p=2628912
+AAA (American Anthropological Association) - Anthropology
+ACS (American Chemical Society) - Chemistry
+AIP (American Institute of Physics) - Physics
+ALWD (Association of Legal Writing Directors) - Legal Studies
+AMA (American Medical Association) - Medical Sciences
+AMS (American Mathematical Society) - Mathematics
+APSA (American Political Science Association) - Political Science, International Studies
+ASA (American Sociological Association) - Sociology 
+AP (Associated Press) - Journalism, Public Relations
+Bluebook - Legal Studies - The Bluebook: A Uniform System of Citation
+CSE (Council of Science Editors) - Biology -  
+Harvard Business School - Business - Harvard Business School Citation Guide
+LSA (Linguistic Society of America)
+Maroonbook - Legal Studies - University of Chicago Manual of Legal Citation
+NLM (National Library of Medicine)
+APA            (American Psychological Association) psychology, education, and other social sciences.
+MLA            (Modern Language Association) literature, arts, and humanities.
+Chicago        history and many other subjects in scholarly and non-scholarly publications.
+Turabian       an adaptation of the Chicago style, designed for college students to use with all subjects.
+IEEE           Institute of Electrical and Electronic Engineers
+ACM            Association for Computing Machinery
+
+xAMA            medicine, health, and biological sciences.
+xCSE            Council of Science Editors
+xACS            American Chemical Society
+xAIP            American Institute of Physics
+xNLM            Authors, Editors, and Publishers
+xASA            American Sociological Association
